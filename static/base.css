@@ -24,7 +24,7 @@ html {
 }
 
 :root {
-    font-size: max(16px, 1.5vw);
+    font-size: max(16px, min(2.5vh, 4vw));
 }
 
 pre {
