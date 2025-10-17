@@ -36,12 +36,10 @@
 #include "<a href="blog">blog</a>.h"
 #include "<a href="imyxh_public.asc">pgp</a>.h"
 
+// setting is persistent with javascript enabled
 enum theme {
-	// by default, we use the theme given by the browser's settings
-	// via the prefers-color-scheme media query
-	<label for="radio_def" class="label_def" checked></label>,
+	<label for="radio_def" class="label_def" checked></label>,	// your browser's default
 	<label for="radio_alt" class="label_alt"></label>,
-	// no javascript required!
 };
 
 const char *OPENPGP_SIGNATURE = "32C4A3942B8CD5750513F522131D20000ED25519";

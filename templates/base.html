@@ -5,13 +5,35 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/base.css">
+  <script>
+    /* javascript isn't necessary for theming, but will allow for site-wide
+    persistence via localStorage */
+    if (localStorage.getItem("theme") === "alt") {
+      document.documentElement.classList.add("preload_alt");
+    }
+    function whichChecked() {
+      if (localStorage.getItem("theme") === "alt") {
+        document.getElementById("radio_alt").checked = true;
+      } else if (localStorage.getItem("theme") === "def") {
+        document.documentElement.classList.remove("preload_alt");
+        document.getElementById("radio_def").checked = true;
+      }
+    }
+    function defClick() {
+      localStorage.setItem('theme', 'def')
+      document.documentElement.classList.remove("preload_alt");
+    }
+    function altClick() {
+      localStorage.setItem('theme', 'alt')
+    }
+  </script>
   {% block head %}
   {% endblock head %}
 </head>
 
-<body>
-  <input type="radio" name="theme" id="radio_def" checked>
-  <input type="radio" name="theme" id="radio_alt">
+<body onload="whichChecked();">
+  <input type="radio" name="theme" id="radio_def" onclick="defClick();" checked>
+  <input type="radio" name="theme" id="radio_alt" onclick="altClick();">
   <div class="whole">
     <section class="section">
       <div class="preamble">
