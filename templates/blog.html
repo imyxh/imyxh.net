@@ -1,14 +1,32 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h1 class="title">
-  {{ section.title }}
-</h1>
-<ul>
-  <!-- If you are using pagination, section.pages will be empty.
-       You need to use the paginator object -->
-  {% for page in section.pages %}
-  <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
-  {% endfor %}
-</ul>
-{% endblock content %}
+
+{% block head %}
+
+<style>
+  .label_def::after {
+    content: "THEME_DARK";
+  }
+  .label_alt::after {
+    content: "THEME_LIGHT";
+  }
+  @media (prefers-color-scheme: light) {
+    .label_def::after {
+      content: "THEME_LIGHT";
+    }
+    .label_alt::after {
+      content: "THEME_DARK";
+    }
+  }
+</style>
+
+{% endblock head %}
+
+
+{% block preamble %}
+
+<label for="radio_def" class="label_def" checked></label>
+<label for="radio_alt" class="label_alt"></label>
+
+{% endblock preamble %}
+

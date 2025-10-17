@@ -1,0 +1,83 @@
+:root {
+    min-height: 100%;
+    width: 100%;
+    --link-u-def: #8AF;
+    --link-v-def: #E8F;
+    --link-u-alt: #30F;
+    --link-v-alt: #A0A;
+    --bg-def: #111;
+    --bg-alt: #FFF;
+    --text-def: #EEE;
+    --text-alt: #000;
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --link-u-alt: #8AF;
+        --link-v-alt: #E8F;
+        --link-u-def: #30F;
+        --link-v-def: #A0A;
+        --bg-alt: #111;
+        --bg-def: #FFF;
+        --text-alt: #EEE;
+        --text-def: #000;
+    }
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.whole {
+    transition: background 0.25s, color 0.25s;
+    min-height: 100%;
+    width: 100%;
+}
+
+.container {
+    padding: 10%;
+}
+
+#radio_def, #radio_alt {
+    display: none;
+}
+
+.label_def, .label_alt {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#radio_def:checked ~ .whole {
+    background-color: var(--bg-def);
+    color: var(--text-def);
+    a {
+        color: var(--link-u-def);
+    }
+    a:visited {
+        color: var(--link-v-def);
+    }
+    .label_def {
+        color: var(--link-v-def);
+    }
+    .label_alt {
+    color: var(--link-u-def);
+    }
+}
+
+#radio_alt:checked ~ .whole {
+    background-color: var(--bg-alt);
+    color: var(--text-alt);
+    a {
+        color: var(--link-u-alt);
+    }
+    a:visited {
+        color: var(--link-v-alt);
+    }
+    .label_def {
+        color: var(--link-u-alt);
+    }
+    .label_alt {
+        color: var(--link-v-alt);
+    }
+}
+

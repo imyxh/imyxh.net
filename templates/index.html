@@ -1,12 +1,31 @@
 {% extends "base.html" %}
 
+
+{% block head %}
+<link rel="me" href="https://weirder.earth/@imyxh">
+
+<style>
+  .label_def::after {
+    content: "THEME_DARK";
+  }
+  .label_alt::after {
+    content: "THEME_LIGHT";
+  }
+  @media (prefers-color-scheme: light) {
+    .label_def::after {
+      content: "THEME_LIGHT";
+    }
+    .label_alt::after {
+      content: "THEME_DARK";
+    }
+  }
+</style>
+{% endblock head %}
+
+
 {% block content %}
 
-<head>
-  <link rel="me" href="https://weirder.earth/@imyxh">
-</head>
-
-<pre>
+<pre style="tab-size: 8;">
 /*
  * SPDX-FileCopyrightText: 1970 Ivy Huang &lt;imyxh&commat;imyxh.net&gt;
  * SPDX-License-Identifier: CC0-1.0
@@ -17,8 +36,16 @@
 #include "<a href="blog">blog</a>.h"
 #include "<a href="imyxh_public.asc">pgp</a>.h"
 
-// hex signature of public key (see pgp.h)
+enum theme {
+	// by default, we use the theme given by the browser's settings
+	// via the prefers-color-scheme media query
+	<label for="radio_def" class="label_def" checked></label>,
+	<label for="radio_alt" class="label_alt"></label>,
+	// no javascript required!
+};
+
 const char *OPENPGP_SIGNATURE = "32C4A3942B8CD5750513F522131D20000ED25519";
 </pre>
 
 {% endblock content %}
+
