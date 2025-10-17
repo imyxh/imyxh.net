@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+<!-- vim: set cc=60 tw=60 : -->
 
 
 {% block head %}
@@ -29,18 +30,18 @@
 // SPDX-FileCopyrightText: 1970 Ivy Huang &lt;<a href="mailto:imyxh@imyxh.net">imyxh@imyxh.net</a>&gt;
 // SPDX-License-Identifier: CC0-1.0
 /*
- * !!! DO NOT INCLUDE THIS HEADER FILE !!!
+ * The following BASIC ACTIONS are always available to the
+ * Runner during their action phase, in addition to any
+ * actions provided by card abilities.
  *
- * I was _trying_ to write up some kind of portfolio for myself but my fingers
- * slipped and I accidentally fed the site into the C preprepreprocessor. Now it
- * looks like this and my DOM throws a segfault every time I try to import
- * ReactJS. In despair I tried running this through the C prepreprocessor, but
- * then _that_ hid some CSS checkboxes where I can't find them.
+ *   - [click]: Gain 1[c].
+ *   - [click]: Draw 1 card.
+ *   - [click]: Install 1 program, resource, or piece of
+ *     hardware from the grip.
+ *   - [click]: Play 1 event from the grip.
+ *   - [click]: Run any server.
+ *   - [click], 2[c]: Remove 1 tag.
  *
- * I feel like clang is punishing me for shipping bloat or something so I'm just
- * gonna make everything lightweight this time.
- *
- *   ---imyxh
  */
 
 #include "<a href="blog">blog</a>.h<small><small><small><small><small>tml</small></small></small></small></small>"
@@ -50,7 +51,7 @@ enum theme {
 	<label for="radio_alt" class="label_alt"></label>,
 };
 
-const char *OPENPGP_SIG = "32C4A3942B8CD5750513F522131D20000ED25519";
+const char OPENPGP_SIG[] = "131D20000ED25519";
 const char OPENPGP_KEY[] = {
 	#embed "<a href="imyxh_public.asc">imyxh_public.asc</a>"
 };
