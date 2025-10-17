@@ -23,7 +23,7 @@
     }
     /* fire whichChecked() on bfcache load too. this flashes, unfortunately */
     window.addEventListener('pageshow', e => {
-      if (e.persisted) document.documentElement.classList.remove("preload_alt");
+      if (e.persisted) whichChecked();
     });
     function defClick() {
       localStorage.setItem('theme', 'def')
