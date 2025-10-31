@@ -1,0 +1,380 @@
+<!-- vim: set shiftwidth=2 textwidth=0: -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Central Processing</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="script.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <h1>Central Processing</h1>
+
+  <p>
+    <i>Central Processing</i>, or perhaps <i>Central</i> for short, is a
+    cooperative card-based puzzle game generally for two players, about
+    learning elements of binary logic—the building blocks of computer code.
+    It's also a game with many variations, allowing play to be tuned for
+    difficulty, complexity, and number of players.
+  </p>
+
+  <p>
+    players: 2<br>
+    duration: about 10 to 15 min per round<br>
+    audience: general, 10+ years of age suggested
+  </p>
+
+  <p>
+    Minimal materials needed: a standard deck of 52 playing cards and 4 jokers,*
+    a coin to flip, paper and a writing implement for short notes, the printed
+    reference sheet.
+  </p>
+
+  <p>
+    Optional materials: the randomizer at the bottom of <a
+    href="https://imyxh.net/central_processing">this website</a> to randomly
+    generate 8-bit strings, and a custom deck of cards.
+  </p>
+
+  <p>
+    The reference sheet and custom deck of cards may be downloaded
+    <a href="https://gitlab.com/imyxh/imyxh.gitlab.io/-/tree/master/public/central_processing">
+    here</a> or as a zip file <a
+    href="central_processing_materials.zip">here</a>.
+  </p>
+
+  <p>
+    *Note that many standard 54 card decks that contain only 2 jokers will
+    actually have 56 cards, with two of them being decorative start and end
+    cards. This deck will also work, once players decide which side of the
+    decorative cards is the “1” and the “0” side.
+  </p>
+
+  <h2>rules</h2>
+
+  <h3>about binary</h3>
+
+  <p>
+    Binary is a system of writing numbers in which each binary digit, or "bit,"
+    is either 0 or 1. So, for example, the number one is just written as 1, but
+    the number two is written as 10, because you can’t increment the ones place
+    any more.
+  </p>
+
+  <p>
+    In this game, we call a string of bits a register, which you'll represent
+    as a row of eight cards, with 0 on one side and 1 on the other.
+  </p>
+
+  <p>
+    Computers work by doing various different operations on various different
+    operands. Operands are what we call the input or output of an operation.
+    For example, in the operation “add x to y,” the operator is “add”, and the
+    operands are “x” and “y”. In Central Processing, we'll focus on some of the
+    most common binary operators, specifically, the ones named NOT, AND, OR,
+    and XOR. It's easiest to understand them with the truth tables at the
+    bottom of these rules, but here's a verbal explanation:
+  </p>
+
+  <ol>
+    <li>NOT is the simplest operator. it has one operand, which is both an
+    input and an output. it simply flips all the bits in this operand. In
+    central processing, you apply the NOT operand on a register, and when doing
+    so you flip all the cards in the register.</li>
+    <li>AND is another operator, but it takes both input and output operands.
+    When you apply AND to an input operand and an output operand, every bit in
+    the output operand will be 1 only if both corresponding input bits are 1.
+    otherwise, it's 0.</li>
+    <li>OR sets each output bit to 1 if, inclusively, the bit of the first or
+    second operand is 1, i.e. if at least one of the input bits is 1.</li>
+    <li>XOR sets each output bit to 1 if, exclusively, the bit in either the
+    first or the second operand is 1, i.e. if the input bits differ.</li>
+  </ol>
+
+  <h3>minimal setup (with regular playing cards and no internet)</h3>
+
+  <ol>
+    <li>Remove cards with values 1 (A) through 8. Separate out the hearts and
+    spades and put them aside in a pile. These are called immediate operands,
+    or <i>immediates</i> for short.</li>
+    <li>With the remaining diamonds and clubs of values 1 through 8, distribute
+    one suit to either player, forming the player registers. Order them from 1
+    to 8 from right to left from the perspective of the respective player.</li>
+    <li>From the rest of the cards, remove the 4 jokers and 4 kings, and place
+    them in the center, forming the central register.</li>
+    <li>Remaining should be all the cards of values 9 through Q. These are
+    operators. Shuffle these with the immediates (hearts and spades with values
+    1-8), forming the draw pile.</li>
+    <li>Now we will generate and record our “goal state.”</li>
+    <ul>
+      <li>If you have an internet connection, you may follow step 4 in the
+      custom setup.</li>
+      <li>Otherwise, pick up the 4 jokers and 4 kings that form the central
+      register.</li>
+      <ul>
+        <li><u>For an easier game,</u> flip two of them face down.</li>
+        <li><u>For a harder game,</u> flip four of them face down.</li>
+      </ul>
+      <li>Then shuffle the cards without looking and place them in order on the
+      table. Record this goal state as a string of 1s and 0s on your piece of
+      paper and place it near the central register.</li>
+      <li>Note that the goal state will look different to each player depending
+      on their orientation. If it reads 00000001 for one player, it will read
+      10000000 for the other.</li>
+    </ul>
+    <li>Now, we will randomize the registers.</li>
+    <ul>
+      <li>If you have an internet connection, you may use the results from step
+      5 in the custom setup</li>
+      <li>Otherwise, for each card in the central register, flip a coin; if
+      heads, place the card face up, and if tails, place it face down. Then do
+      the same for both of the player registers.</li>
+    </ul>
+    <li>Deal six cards to each player from the draw pile. Decide who goes
+    first.</li>
+  </ol>
+
+  <h3>custom setup (requires custom-printed cards and internet access)</h3>
+
+  <ol>
+    <li>Some cards will have a 1 on one side, and a 0 on the other. These are
+    bits. Distribute eight bits in a line in front of each player. Each line of
+    bits is a player register.</li>
+    <li>Distribute the last eight bits in the center in a line. This is the
+    central register.</li>
+    <li>Shuffle all remaining cards together, forming the draw pile.</li>
+    <li>Now we will find and record our “goal state.” Navigate to the bottom of
+    this page and use the randomizer tool.</li>
+    <ul>
+      <li>If you wish to control your difficulty, select it from the dropdown
+      menu and click “generate custom goal.”</li>
+      <li>For a random difficulty, simply click the “randomize!” button.</li>
+      <li>Either way, read the string of eight bits to the right of “goal
+      state” and write them down on a piece of paper near the central
+      register.</li>
+      <li>Note that the goal state will look different to each player depending
+      on their orientation. If it reads 00000001 for one player, it will read
+      10000000 for the other.</li>
+    </ul>
+    <li>Now, we will randomize the registers. Hit “randomize!” if you haven't
+    already, and flip over cards in each of the three registers until they
+    match what is shown on the randomizer.</li>
+    <li>Deal six cards to each player from the draw pile. Decide who goes
+    first.</li>
+  </ol>
+
+  <h3>mechanics</h3>
+
+  <ol>
+    <li>A <i>register</i> is a row of 8 bits (cards) ordered in a line, with
+    each card having the value of one (face-up) or zero (face-down).</li>
+    <li>Each player has a register, and there is one register in the center.
+    All the registers are randomized at the start of the game.</li>
+    <li>There is a draw pile for the player to draw from which contains
+    <i>operators</i> (cards from 9-Q) and immediate operands or
+    <i>immediates</i> (red cards from 1-8).</li>
+    <li>The operators are AND (9), OR (10), XOR (J), and NOT (Q), and their
+    functions are explained in the operator table below. They are played on two
+    registers, from one to another, to modify the latter register’s bit values.
+    They can also be played directly onto a register using an immediate card as
+    an argument. (Note that NOT is an exception to these, and is only played on
+    one register with no immediates.)</li>
+    <li>Immediates are used as operands; for example, a red 4 represents the
+    string 11110111 (i.e. the only zero is the fourth one from the right). This
+    replaces the “first register” for the operator, and so can be played
+    directly onto a player register or the central register. See the chart
+    listed below for the binary strings for each immediate.</li>
+    <li>On a player's turn, they may play as many cards from their hand as they
+    would like. Playing cards consists of playing an operator and optionally an
+    immediate at a time, following the operator table below. Players end their
+    turn by drawing until they have six cards.</li>
+    <li>One of the two following mechanics will be selected:</li>
+    <ul>
+      <li><u>For beginner players:</u> players may, on their turn, also discard
+      cards as they wish.</li>
+      <li><u>For advanced players:</u> players may not freely discard cards,
+      but on their turn, the player may <i>push</i> a card to the stack,
+      meaning they place one of the cards in their hand on the <i>stack</i>.
+      The stack is created next to the draw and discard piles. When a player
+      draws to conclude their turn, if they did not push to the stack, they
+      can—for each card they draw—choose to pop from the stack, meaning draw
+      the card from the top of the stack instead of the draw pile. This
+      mechanic allows players to exchange cards with each other with some
+      strategizing.</li>
+    </ul>
+    <li>Players may talk freely and strategize together about their cards. They
+    can talk about their cards, but they may not show each other their
+    hand.</li>
+    <li>Both players win when the central register matches the goal state. Both
+    players lose when all the cards have been drawn from the draw pile and
+    there is no way to win.</li>
+  </ol>
+
+  <h3>player's turn</h3>
+
+  <ol>
+    <li>You <i>must</i> do one or more of the following actions in any
+    order:</li>
+    <ul>
+      <li>Play an operator on two different registers, or use an immediate and
+      operator on a register, or play a NOT on a register. You may not interact
+      with the other player's register. The operator and any immediate used are
+      both placed in the discard pile.</li>
+      <li><u>For beginner players:</u> place as many cards as you please on the
+      discard pile.</li>
+      <li><u>For advanced players:</u> push a card in your hand to the
+      stack.</li>
+    </ul>
+    <li>After all desired actions have been completed, draw from the draw pile
+    and/or the stack (if playing with it, and you did not push this turn) until
+    you have six cards in your hand.</li>
+  </ol>
+
+  <h3>additional reminders</h3>
+
+  <ul>
+    <li>This game is cooperative, and so players may talk about their cards and
+    their team strategy freely. They may not, however, show each other their
+    hands.</li>
+    <li>Players can decide who goes first after looking at their cards and
+    discussing them.</li>
+    <li>Players must take at least one action per turn.</li>
+    <li>For the playing card version, note that bits are indexed from right to
+    left.</li>
+    <li>Players cannot push and pop from the stack in the same turn; in essence,
+    if they push to the stack in their turn, they can only draw from the draw
+    pile.</li>
+    <li>Advanced players may wish to attempt multiple goal states in
+    succession.</li>
+  </ul>
+
+  <h3>truth tables</h3>
+
+  <p>9: AND</p>
+
+  <table>
+    <tr><th>IN1</th><th>IN2</th><th>OUT</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td><td>0</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td></tr>
+  </table>
+
+  <p>10: OR</p>
+
+  <table>
+    <tr><th>IN1</th><th>IN2</th><th>OUT</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>1</td></tr>
+  </table>
+
+  <p>J: XOR</p>
+
+  <table>
+    <tr><th>IN1</th><th>IN2</th><th>OUT</th></tr>
+    <tr><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>1</td><td>0</td></tr>
+  </table>
+
+  <p>Q: NOT</p>
+
+  <table>
+    <tr><th>IN</th><th>OUT</th></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+  </table>
+
+  <h3>immediates table</h3>
+
+  <p>
+    Black cards: (if n is the card number, then 2<sup>n−1</sup> is 1, and the
+    rest are 0)
+  </p>
+
+  <ol>
+    <li>00000001</li>
+    <li>00000010</li>
+    <li>00000100</li>
+    <li>00001000</li>
+    <li>00010000</li>
+    <li>00100000</li>
+    <li>01000000</li>
+    <li>10000000</li>
+  </ol>
+
+  <p>
+    Red cards: (if n is the card number, then 2<sup>n−1</sup> is 0, and the
+    rest are 1)
+  </p>
+  <ol>
+    <li>11111110</li>
+    <li>11111101</li>
+    <li>11111011</li>
+    <li>11110111</li>
+    <li>11101111</li>
+    <li>11011111</li>
+    <li>10111111</li>
+    <li>01111111</li>
+  </ol>
+
+  <h2>randomizer</h2>
+
+  <p>
+    To generate initial and goal states to start playing with, click:
+    <button onclick="randomize()">randomize!</button>
+  </p>
+
+  <pre id="randomized">
+  </pre>
+
+  <p>
+    However, note that this may return goal states with varying levels of
+    difficulty. For example, the goal state of <code>00000000</code> is
+    particularly easy to reach. For more control over difficulty levels, we
+    suggest you choose a number between one and four (four is hardest), then
+    generate a goal state with that many ones (or that many zeroes). You can do
+    this either by shuffling face-up with face-down cards, or by ignoring the
+    goal state in the output above and using the generator here:
+  </p>
+
+  difficulty:
+  <select name="difficulty" id="difficulty">
+    <option value="1">1 (easy)</option>
+    <option value="2">2 (medium)</option>
+    <option value="3">3 (hard)</option>
+    <option value="4">4 (hardest)</option>
+  </select>
+  <button onclick="customDifficulty()">generate custom goal</button>
+
+  <pre id="customGoal">
+  </pre>
+
+  <h2>public domain</h2>
+
+  <p>
+    <i>Central Processing</i> was developed by Ford McDill, Ivy Huang, and Luca
+    Guerrera for Prof. Camilla Zamboni’s wonderful course, <i>Educational
+    Gaming Lab</i>, at Wesleyan University. The inspiration for a game like
+    <i>Central</i> initially came out of a discussion between Ivy and other
+    members of the <a href="https://unix.lgbt">unix.lgbt</a> community, where we
+    envisioned a broad family of card-based games based on computer logic,
+    which we at the time called <i>Computer Game</i>.
+  </p>
+
+  <p>
+    To the extent possible under law, Ford McDill, Ivy Huang, and Luca Guerrera
+    have waived all copyright and related or neighboring rights to <i>Central
+    Processing</i>. This work is published from the United States.
+  </p>
+
+</body>
+
+</html>
+

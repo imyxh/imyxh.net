@@ -1,0 +1,50 @@
+/* vim: set shiftwidth=2: */
+
+body {
+  max-width: 60rem;
+  padding: 2rem;
+  margin: auto;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+[type=checkbox]:not(:checked) + label {
+  color: gray;
+  text-decoration: line-through;
+  font-style: normal;
+}
+
+embed {
+  display: block;
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input, select {
+  font-family: monospace;
+}
+
+input.checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+input.num {
+  width: 2.5rem;
+  text-align: center;
+}
+
+#bats:checked + label em {
+  color: green;
+}
+#pit:checked + label em {
+  color: blue;
+}
+#wumpus:checked + label em {
+  color: red;
+}
+#human:checked + label em {
+  color: red;
+}
+

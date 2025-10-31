@@ -1,0 +1,121 @@
+<!-- vim: set shiftwidth=2 textwidth=0: -->
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Hidden Wumpus</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <h1>Hidden Wumpus</h1>
+  A game of geometry and deception for 3 or more players (and one gamemaster).
+
+  <h2>setup</h2>
+
+  <p><ol>
+    <li>Designate one person as the gamemaster (gm) and the rest as players;</li>
+    <li>give the gm and each player a privacy screen and some stationery for any secret notes they wish to take;</li>
+    <li>assign each of N players a unique color, and give the gm and each player N meeples, one of each color;</li>
+    <li>gm: secretly and randomly assign one or two players as Wumpuses, and the rest as humans;</li>
+    <li>gm: secretly randomize the room numbers from one to twenty on a flattened dodecahedron;</li>
+    <li>gm: secretly place each player in a random empty room;</li>
+    <li>gm: secretly place bats in two random empty rooms;</li>
+    <li>gm: secretly place pits in two random empty rooms.</li>
+  </ol></p>
+
+  <h2>rules</h2>
+
+    <p>This game is played in a tunnel system of twenty rooms, each one connected to three others. This is equivalent to a dodecahedron. An example tunnel system is displayed below, but keep in mind that the room numbers will be randomized:</p>
+
+    <embed src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Hunt_the_Wumpus_map.svg">
+
+    <p>Humans win if they kill all Wumpuses, and Wumpuses win if they eat all humans or if all humans run out of magic arrows.</p>
+
+    <p>Each human starts out with two magic arrows, which can twist and turn, passing through at most four tunnels. Humans shoot their arrows by providing an ordered list of rooms the arrow will pass through. In the example system above, a valid arrow path for a human starting in room 1 would be “8, 9, 8, 7.” If at any point the sequence is invalid, the arrow will instead fly into a random adjacent room!</p>
+
+    <p>If a human is ever in the same room as a pit or a Wumpus, the human dies. If a human is ever in the same room with bats, the bats pick them up and place them into a random room. Arrows kill all players in the rooms they pass through.</p>
+
+    <p>A random player takes their turn first. The gm provides them with information about if there are bats, pits, or Wumpuses nearby, and they have the option of shooting an arrow, and may also move to an adjacent room.</p>
+
+  <h2>turn information</h2>
+
+    <p>
+      <input type="checkbox" class="checkbox" id="bats" name="bats">
+      <label for="bats">You hear flapping. There are <em>bats</em> in an adjacent room.</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="checkbox" id="pit" name="pit">
+      <label for="pit">You feel a breeze. There is a <em>pit</em> in an adjacent room.</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="checkbox" id="wumpus" name="wumpus">
+      <label for="wumpus">You smell a horrible stench! There is a <em>Wumpus</em> at most two rooms away.</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="checkbox" id="human" name="human">
+      <label for="human">You smell a delicious meal! There is a <em>human</em> at most two rooms away.</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="checkbox" id="withbats" name="withbats">
+      <label for="withbats">You are in a room with <em>bats</em>, but you are immune.</label>
+    </p>
+
+    <p>
+      <input type="checkbox" class="checkbox" id="withpit" name="withpit">
+      <label for="withpit">You are in a room with a <em>pit</em>, but you are immune.</label>
+    </p>
+
+    <p>
+    Current room:
+      <input type="text" class="num">.
+    Adjacent rooms:
+      <input type="text" class="num">,
+      <input type="text" class="num">,
+      <input type="text" class="num">.
+    </p>
+
+    <p>
+    You are a
+      <select>
+      <option>human</option>
+      <option>Wumpus</option>
+      </select>
+    with <input type="text" class="num"> arrows.
+
+    You may optionally do any of these actions in the following order:
+    <ol>
+      <li>if you have any left, shoot a magic arrow by providing the gm with an ordered list of up to four rooms;</li>
+      <li>move into an adjacent room by providing the gm with one room number.</li>
+    </ol>
+    </p>
+
+  <h2>in-between turns</h2>
+
+  If you are the gm, follow these steps between turns:
+
+  <ol>
+    <li>If an arrow was shot, secretly examine the arrow path. If the arrow path is ever invalid, publicly roll a d3 to pick the next room. Secretly take note of if the arrow killed anyone.</li>
+    <li>If the player moved, secretly move the player to their new room. If they moved into bats, publicly roll a d20 to pick their new room. Secretly take note if the player was a human and fell into a pit, or if the Wumpus killed the human.
+    <li>Announces any player deaths (but not the cause) and the corresponding role of each late player. Also announce if any faction has won the game.</li>
+    <li>If the game continues, allow for discussion and proceed to guide the next player (proceeding anticlockwise) with their turn.</li>
+  </ol>
+
+  <h2>notes</h2>
+
+    <ul>
+      <li>The gm and each player will certainly wish to have paper and pen to take notes on! The group may even wish to have a larger piece of paper at the center of the table where players can collaborate on a map of the tunnel system.
+      <li>Players may lie about what their role is, which room they are in, what they sense, and what actions they are doing. Enjoy the chaos!</li>
+      <li>The Wumpus can claim to do all sorts of human actions like shoot an arrow, smell a Wumpus, or peacefully share a room (that it isn't actually in) with a human.</li>
+      <li>Since the bat and arrow misfire dice rolls are public, and cannot be triggered by the Wumpus, they can be used to confirm if the player is a human. But be wary! The Wumpus could also encourage humans to waste arrows or take risky bat adventures.</li>
+      <li>For large amounts of players, it is probably best if the number of rooms increases.</li>
+    </ul>
+
+</body>
+
+</html>
